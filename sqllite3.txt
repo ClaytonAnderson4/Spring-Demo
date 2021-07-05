@@ -1,0 +1,26 @@
+
+
+$sqlite3 futurexcourse.db
+
+.databases
+
+CREATE TABLE
+    course
+    (
+		
+		courseid BIGINT NOT NULL,
+		coursename VARCHAR,
+		author VARCHAR,
+		PRIMARY KEY (courseid)
+	);
+	
+	
+INSERT INTO course (courseid, coursename, author) VALUES 
+(1, 'Big Data Hadoop Spark', 'FutureXSkill');	
+
+INSERT INTO course (courseid, coursename, author) VALUES 
+(2, 'Java Microservices', 'FutureXSkill');	
+
+INSERT INTO course (courseid, coursename, author) VALUES 
+(3, 'AWS', 'XYZ');	
+
