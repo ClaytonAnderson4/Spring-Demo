@@ -23,20 +23,21 @@ public class CatalogController {
         this.client = client;
     }
 
+    //http://localhost:8002/
     @GetMapping("/")
     @HystrixCommand(fallbackMethod = "displayDefaultHome")
     public String getCatalogHome() {
         RestTemplate restTemplate = new RestTemplate();
 
         //default mapping for the getCourseAppHome method in the CourseApp CourseController.
-        //String courseAppURL = "http://localhost:8080/";
-
-        //Using Eureka Client
-        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
-        String courseAppURL = instanceInfo.getHomePageUrl();
+        String courseAppURL = "http://localhost:8001/";
 
         //setting the returned string to the courseAppMessage.
         String courseAppMessage = restTemplate.getForObject(courseAppURL, String.class);
+
+        //Using Eureka Client
+//        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
+//        String courseAppURL = instanceInfo.getHomePageUrl();
 
         //appended the courseAppMessage to the end of the returned string.
         return "Welcome to Pyramid's Course Catalog! " + courseAppMessage;
