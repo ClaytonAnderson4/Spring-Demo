@@ -60,7 +60,7 @@ public class CatalogController {
 //        courseAppURL = courseAppURL + "/courses";
 
         //appended the courseAppMessage to the end of the returned string.
-        return("Our courses are " + courses);
+        return("Courses: " + courses);
     }
 
     @GetMapping("/first")
