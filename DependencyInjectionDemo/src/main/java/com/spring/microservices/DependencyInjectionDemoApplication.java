@@ -16,15 +16,17 @@ public class DependencyInjectionDemoApplication {
 
         System.out.println("Dependency Injection Demo");
 
-        AnimalSpeak killer = new AnimalSpeak();
-        Animal animal = new Cat(); //Or cat
+        //Comment this out and uncomment the code below.
+        Animal animal = new Dog(); //Or cat
+        AnimalSpeak killer = new AnimalSpeak(animal);
+        killer.makeAnimalSpeak();
+
 
         //Injecting dependencies at run time....
+        //The primary annotation on the dog class is how it knows which to wire up.
 //        AnimalSpeak killer = context.getBean(AnimalSpeak.class);
 //        Animal animal = context.getBean(Animal.class);
-
-        killer.setAnimal(animal);
-        killer.makeAnimalSpeak();
+//        killer.makeAnimalSpeak();
 
         System.out.println("******************");
 

@@ -9,7 +9,7 @@ public class AnimalSpeak {
     //Interface
     private Animal animal;
 
-    //Dependency injection we are injecting the Animal class into the AnimalSpeak class.
+    //Dependency injection we are injecting the Animal interface into the AnimalSpeak class.
     @Autowired
     public AnimalSpeak(Animal animal) {
         this.animal = animal;
@@ -19,13 +19,6 @@ public class AnimalSpeak {
     public AnimalSpeak() {
     }
 
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
 
     public void makeAnimalSpeak() {
         this.animal.speak();
