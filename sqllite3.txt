@@ -1,13 +1,12 @@
 
 
-$sqlite3 futurexcourse.db
+$sqlite3 course.db
 
 .databases
 
 CREATE TABLE
     course
     (
-		
 		courseid BIGINT NOT NULL,
 		coursename VARCHAR,
 		author VARCHAR,
