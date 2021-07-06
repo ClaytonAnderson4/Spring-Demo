@@ -50,14 +50,14 @@ public class CatalogController {
         String courses = "";
 
         //default mapping for the getCourseAppHome method in the CourseApp CourseController.
-        //String courseAppURL = "http://localhost:8080/courses/";
-
-        //Using Eureka Client
-        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
-        String courseAppURL = instanceInfo.getHomePageUrl();
-        courseAppURL = courseAppURL + "/courses";
+        String courseAppURL = "http://localhost:8001/courses/";
 
         courses = restTemplate.getForObject(courseAppURL,String.class);
+
+        //Using Eureka Client
+//        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
+//        String courseAppURL = instanceInfo.getHomePageUrl();
+//        courseAppURL = courseAppURL + "/courses";
 
         //appended the courseAppMessage to the end of the returned string.
         return("Our courses are " + courses);
@@ -66,36 +66,37 @@ public class CatalogController {
     @GetMapping("/first")
     @HystrixCommand(fallbackMethod = "displayDefaultHome")
     public String getFirstCourse() {
+        RestTemplate restTemplate = new RestTemplate();
         Course course = new Course();
         User user = new User();
 
         //Mapping to get the first course
-        //String courseAppURL = "http://localhost:8080/1";
+        String courseAppURL = "http://localhost:8001/1";
 
         //Using Eureka Client
-        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service",false);
-        String courseAppURL = instanceInfo.getHomePageUrl();
-        courseAppURL = courseAppURL+"/1";
-        RestTemplate restTemplate = new RestTemplate();
+//        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service",false);
+//        String courseAppURL = instanceInfo.getHomePageUrl();
+//        courseAppURL = courseAppURL+"/1";
+
 
         course = restTemplate.getForObject(courseAppURL,Course.class);
 
         //returning the string with the first course name append.
-        //return "Pyramid's first course is: " + course.getCoursename();
+        return "Pyramid's first course is: " + course.getCoursename();
 
         //Fetching from the user service
-        instanceInfo = client.getNextServerFromEureka("user-app-service",false);
-        String userAppURL = instanceInfo.getHomePageUrl();
-        userAppURL = userAppURL + "/" + course.getCourseid();
-
-        String usersList = restTemplate.getForObject(userAppURL,String.class);
-
-        assert usersList != null;
-        return("Our first course is "
-                + course.getCoursename()
-                + "***** and Enrolled users are ***** "
-                + usersList
-        );
+//        instanceInfo = client.getNextServerFromEureka("user-app-service",false);
+//        String userAppURL = instanceInfo.getHomePageUrl();
+//        userAppURL = userAppURL + "/" + course.getCourseid();
+//
+//        String usersList = restTemplate.getForObject(userAppURL,String.class);
+//
+//        assert usersList != null;
+//        return("Our first course is "
+//                + course.getCoursename()
+//                + "***** and Enrolled users are ***** "
+//                + usersList
+//        );
     }
 
     public String displayDefaultHome() {
