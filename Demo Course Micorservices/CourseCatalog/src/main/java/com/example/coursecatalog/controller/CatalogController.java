@@ -32,17 +32,18 @@ public class CatalogController {
         //default mapping for the getCourseAppHome method in the CourseApp CourseController.
         String courseAppURL = "http://localhost:8001/";
 
-        //setting the returned string to the courseAppMessage.
-        String courseAppMessage = restTemplate.getForObject(courseAppURL, String.class);
-
         //Using Eureka Client
 //        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
 //        String courseAppURL = instanceInfo.getHomePageUrl();
+
+        //setting the returned string to the courseAppMessage.
+        String courseAppMessage = restTemplate.getForObject(courseAppURL, String.class);
 
         //appended the courseAppMessage to the end of the returned string.
         return "Welcome to Pyramid's Course Catalog! " + courseAppMessage;
     }
 
+    //http://localhost:8002/catalog
     @RequestMapping("/catalog")
     @HystrixCommand(fallbackMethod = "displayDefaultHome")
     public String getCatalog() {
@@ -52,17 +53,18 @@ public class CatalogController {
         //default mapping for the getCourseAppHome method in the CourseApp CourseController.
         String courseAppURL = "http://localhost:8001/courses/";
 
-        courses = restTemplate.getForObject(courseAppURL,String.class);
-
         //Using Eureka Client
 //        InstanceInfo instanceInfo = client.getNextServerFromEureka("course-app-service", false);
 //        String courseAppURL = instanceInfo.getHomePageUrl();
 //        courseAppURL = courseAppURL + "/courses";
 
+        courses = restTemplate.getForObject(courseAppURL,String.class);
+
         //appended the courseAppMessage to the end of the returned string.
         return("Courses: " + courses);
     }
 
+    //http://localhost:8002/first
     @GetMapping("/first")
     @HystrixCommand(fallbackMethod = "displayDefaultHome")
     public String getFirstCourse() {
@@ -82,7 +84,10 @@ public class CatalogController {
         course = restTemplate.getForObject(courseAppURL,Course.class);
 
         //returning the string with the first course name append.
-        return "Pyramid's first course is: " + course.getCoursename();
+        return "Pyramid's first course is: "
+                + course.getCoursename() + " "
+                + "Author "
+                + course.getAuthor();
 
         //Fetching from the user service
 //        instanceInfo = client.getNextServerFromEureka("user-app-service",false);

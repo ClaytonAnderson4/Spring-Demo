@@ -15,11 +15,11 @@ CREATE TABLE
 	
 	
 INSERT INTO course (courseid, coursename, author) VALUES 
-(1, 'Big Data Hadoop Spark', 'FutureXSkill');	
+(1, 'Clojure', 'Jacob Goodson');	
 
 INSERT INTO course (courseid, coursename, author) VALUES 
-(2, 'Java Microservices', 'FutureXSkill');	
+(2, 'Java Microservices', 'Adam Ingram');	
 
 INSERT INTO course (courseid, coursename, author) VALUES 
-(3, 'AWS', 'XYZ');	
+(3, 'AWS', 'Mane V');	
 
