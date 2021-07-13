@@ -14,19 +14,23 @@ public class DependencyInjectionDemoApplication {
         //The context is like your factory. It manages all your dependencies and more.
         ApplicationContext context = SpringApplication.run(DependencyInjectionDemoApplication.class, args);
 
-        System.out.println("Dependency Injection Demo");
+        System.out.println("\nDependency Injection Demo\n");
 
-        //Comment this out and uncomment the code below.
-        Animal animal = new Dog(); //Or cat
+        //Creating a Dog of type Animal called animal.
+        Animal animal = new Dog();
+        //Creating AnimalSpeak and passing in a animal.
         AnimalSpeak killer = new AnimalSpeak(animal);
         killer.makeAnimalSpeak();
 
+        System.out.println("******************");
 
         //Injecting dependencies at run time....
-        //The primary annotation on the dog class is how it knows which to wire up.
-//        AnimalSpeak killer = context.getBean(AnimalSpeak.class);
-//        Animal animal = context.getBean(Animal.class);
-//        killer.makeAnimalSpeak();
+        AnimalSpeak killer1 = context.getBean(AnimalSpeak.class);
+
+        //Since we have multiple components we need to @Primary to let
+        //the context know which one to wire up.
+
+        killer1.makeAnimalSpeak();
 
         System.out.println("******************");
 
