@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/v1")
 @RestController
-public class HelloService {
+public class HelloController {
 
     //http://localhost:8080/api/v1/
     @GetMapping("/")
     public String index() {
         return "Hello World 2021...";
     }
+
+
+
  }
