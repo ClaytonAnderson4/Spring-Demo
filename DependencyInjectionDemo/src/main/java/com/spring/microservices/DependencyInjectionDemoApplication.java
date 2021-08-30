@@ -19,18 +19,18 @@ public class DependencyInjectionDemoApplication {
         //Creating a Dog of type Animal called animal.
         Animal animal = new Dog();
         //Creating AnimalSpeak and passing in a animal.
-        AnimalSpeak killer = new AnimalSpeak(animal);
-        killer.makeAnimalSpeak();
+        AnimalSpeak buck = new AnimalSpeak(animal);
+        buck.makeAnimalSpeak();
 
         System.out.println("******************");
 
         //Injecting dependencies at run time....
-        AnimalSpeak killer1 = context.getBean(AnimalSpeak.class);
+        AnimalSpeak buck1 = context.getBean(AnimalSpeak.class);
 
         //Since we have multiple components we need to @Primary to let
         //the context know which one to wire up.
 
-        killer1.makeAnimalSpeak();
+        buck1.makeAnimalSpeak();
 
         System.out.println("******************");
 

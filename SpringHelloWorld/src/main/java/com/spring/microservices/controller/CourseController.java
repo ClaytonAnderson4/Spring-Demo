@@ -1,6 +1,7 @@
 package com.spring.microservices.controller;
 
 import com.spring.microservices.entity.Course;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,13 +12,13 @@ import java.util.List;
 public class CourseController {
 
     //http://localhost:8080/example/course
-    @RequestMapping("/example/course")
+    @GetMapping("/example/course")
     public String getCourse() {
         return "My First Course...";
     }
 
     //http://localhost:8080/example/courses
-    @RequestMapping("/example/courses")
+    @GetMapping("/example/courses")
     public List<Course> getCourses(){
         return Arrays.asList(
                 new Course("100", "course1", "author1"),
