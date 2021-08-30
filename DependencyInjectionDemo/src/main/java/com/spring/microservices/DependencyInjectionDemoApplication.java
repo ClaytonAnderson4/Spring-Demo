@@ -12,24 +12,26 @@ public class DependencyInjectionDemoApplication {
     //Entry point for project
     public static void main(String[] args) {
         //The context is like your factory. It manages all your dependencies and more.
+        //The context is what gets started and run in the background of your spring application.
         ApplicationContext context = SpringApplication.run(DependencyInjectionDemoApplication.class, args);
 
         System.out.println("\nDependency Injection Demo\n");
 
-        //Creating a Dog of type Animal called animal.
+        // Creating a Dog of type Animal called animal.
         Animal animal = new Dog();
-        //Creating AnimalSpeak and passing in a animal.
+
+        // Creating AnimalSpeak and passing in a animal.
         AnimalSpeak buck = new AnimalSpeak(animal);
         buck.makeAnimalSpeak();
 
         System.out.println("******************");
 
-        //Injecting dependencies at run time....
+        // Injecting dependencies at run time....
+        // This is letting the container do all the work under the hood.
         AnimalSpeak buck1 = context.getBean(AnimalSpeak.class);
 
-        //Since we have multiple components we need to @Primary to let
-        //the context know which one to wire up.
-
+        // Since we have multiple components we need to @Primary to let
+        // the context know which one to wire up.
         buck1.makeAnimalSpeak();
 
         System.out.println("******************");
