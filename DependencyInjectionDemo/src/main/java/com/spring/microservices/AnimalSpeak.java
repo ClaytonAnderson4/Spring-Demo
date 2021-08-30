@@ -11,8 +11,8 @@ public class AnimalSpeak {
     // Interface
     private Animal animal;
 
-    // Dependency injection: we are injecting the Animal interface into
-    // the AnimalSpeak class.
+    // Dependency injection: we are injecting the Animal into
+    // the AnimalSpeak class with constructor injection.
     @Autowired
     public AnimalSpeak(Animal animal) {
         this.animal = animal;
