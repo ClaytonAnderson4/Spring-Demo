@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.util.ArrayList;
-
 @SpringBootApplication
 public class DependencyInjectionDemoApplication {
 
@@ -17,22 +15,23 @@ public class DependencyInjectionDemoApplication {
 
         System.out.println("\nDependency Injection Demo\n");
 
-        // Creating a Dog of type Animal called animal.
-        Animal animal = new Cat();
+        // Creating a Dog or Cat of type Animal.
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
 
-        // Creating AnimalSpeak and passing in a animal.
-        AnimalSpeak buck = new AnimalSpeak(animal);
-        buck.makeAnimalSpeak();
+        // Creating AnimalSpeak and passing in a dog or cat of type Animal.
+        AnimalDoSomething animalDoingSomething = new AnimalDoSomething(myCat);
+        animalDoingSomething.makeAnimalSpeak();
 
         System.out.println("******************");
 
         // Injecting dependencies at run time....
         // This is letting the container do all the work under the hood.
-        AnimalSpeak buck1 = context.getBean(AnimalSpeak.class);
+        AnimalDoSomething myAnimal = context.getBean(AnimalDoSomething.class);
 
         // Since we have multiple components we need to @Primary to let
         // the context know which one to wire up.
-        buck1.makeAnimalSpeak();
+        myAnimal.makeAnimalSpeak();
 
         System.out.println("******************");
 
