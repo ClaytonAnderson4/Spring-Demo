@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Cat implements Animal {
 
-    // Cat speak method. 
+    // Cat speak method.
     public void speak() {
         System.out.println("Meow");
     }

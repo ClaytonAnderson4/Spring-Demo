@@ -20,7 +20,7 @@ public class AnimalDoSomething {
     }
 
     // This is taking either dog or cat and calling the speak method.
-    public void makeAnimalSpeak() {
+    public void animalSpeak() {
         this.animal.speak();
     }
 }

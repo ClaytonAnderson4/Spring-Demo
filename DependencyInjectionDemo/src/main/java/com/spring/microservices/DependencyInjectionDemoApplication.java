@@ -20,8 +20,8 @@ public class DependencyInjectionDemoApplication {
         Animal myCat = new Cat();
 
         // Creating AnimalSpeak and passing in a dog or cat of type Animal.
-        AnimalDoSomething animalDoingSomething = new AnimalDoSomething(myCat);
-        animalDoingSomething.makeAnimalSpeak();
+        AnimalDoSomething animalDoingSomething = new AnimalDoSomething(myDog);
+        animalDoingSomething.animalSpeak();
 
         System.out.println("******************");
 
@@ -31,7 +31,7 @@ public class DependencyInjectionDemoApplication {
 
         // Since we have multiple components we need to @Primary to let
         // the context know which one to wire up.
-        myAnimal.makeAnimalSpeak();
+        myAnimal.animalSpeak();
 
         System.out.println("******************");
 
