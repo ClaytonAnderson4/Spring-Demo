@@ -18,9 +18,9 @@ public class AnimalSpeak {
         this.animal = animal;
     }
 
-    // Default Constructor
-    public AnimalSpeak() {
-    }
+//    // Default Constructor
+//    public AnimalSpeak() {
+//    }
 
 
     // This is taking either dog or cat and calling the speak method.
