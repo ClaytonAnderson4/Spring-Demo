@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Cat implements Animal {
 
-    // Cat is implementing Animal so this will give us access
-    // to the speak method.
+    // Cat speak method. 
     public void speak() {
         System.out.println("Meow");
     }
