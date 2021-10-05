@@ -1,2 +1,2 @@
-# Spring-Boot-Demo
+# Spring-Demo
 This repo is demoing purposes only. 
